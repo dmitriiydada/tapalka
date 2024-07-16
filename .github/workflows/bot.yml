@@ -2,9 +2,11 @@ yaml
 name: Telegram Bot
 
 on:
+push:
+    branches:
+     - main
 schedule:
-    - cron: '0 */2 * * *' # Запуск каждые 2 часа
-workflow_dispatch:
+    - cron: '*/5 * * * *' # Запуск каждые 5 минут для проверки обновлений
 
 jobs:
 run-bot:

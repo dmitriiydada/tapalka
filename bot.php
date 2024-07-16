@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 use Telegram\Bot\Api;
 
-$telegram = new Api(getenv('7376577660:AAHCfC8r4rz7PtReqBq4TmCWWY3KSygsnJI'));
+$telegram = new Api(getenv('TELEGRAM_BOT_API_TOKEN'));
 
 // Получение обновлений
 $updates = $telegram->getWebhookUpdates();

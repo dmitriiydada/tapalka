@@ -1,0 +1,28 @@
+yaml
+name: Telegram Bot
+
+on:
+schedule:
+    - cron: '0 */2 * * *' # Запуск каждые 2 часа
+workflow_dispatch:
+
+jobs:
+run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+     uses: actions/checkout@v2
+
+    - name: Set up PHP
+     uses: shivammathur/setup-php@v2
+     with:
+        php-version: '7.4'
+
+    - name: Install dependencies
+     run: composer install
+
+    - name: Run bot
+     env:
+        TELEGRAM_BOT_API_TOKEN: ${{ secrets.TELEGRAM_BOT_API_TOKEN }}
+     run: php bot.php
